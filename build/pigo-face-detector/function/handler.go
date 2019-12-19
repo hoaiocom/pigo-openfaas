@@ -93,11 +93,6 @@ func Handle(req []byte) string {
 		if decodeError != nil {
 			data = req
 		}
-		//Get boundary
-		// mediaType, params, err := mime.ParseMediaType(os.Getenv("Content-Type"))
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
 		parts := string(os.Getenv("Http_Content_Type"))
 		split := strings.Split(parts, "boundary=")
 		mr := multipart.NewReader(strings.NewReader(string(data)), split[1])
