@@ -19,6 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+// Modified by Hoa Nguyen (uit.nth@gmail.com) - Internship student at Klab@NII, Tokyo, Japan
 
 package function
 
@@ -42,7 +43,7 @@ import (
 
 	"mime/multipart"
 
-	"github.com/esimov/pigo/core"
+	pigo "github.com/esimov/pigo/core"
 	"github.com/fogleman/gg"
 )
 
@@ -62,6 +63,7 @@ type FaceDetector struct {
 type DetectionResult struct {
 	Faces       []image.Rectangle
 	ImageBase64 string
+	Time        string
 }
 
 // Handle a serverless request
@@ -92,11 +94,6 @@ func Handle(req []byte) string {
 		if decodeError != nil {
 			data = req
 		}
-		//Get boundary
-		// mediaType, params, err := mime.ParseMediaType(os.Getenv("Content-Type"))
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
 		parts := string(os.Getenv("Http_Content_Type"))
 		split := strings.Split(parts, "boundary=")
 		mr := multipart.NewReader(strings.NewReader(string(data)), split[1])
@@ -144,6 +141,7 @@ func Handle(req []byte) string {
 				resp = DetectionResult{
 					Faces:       rects,
 					ImageBase64: base64.StdEncoding.EncodeToString(image),
+					Time:        "3",
 				}
 				outcome = append(outcome, resp)
 			}
@@ -160,8 +158,6 @@ func Handle(req []byte) string {
 	if err != nil {
 		return fmt.Sprintf("Error encoding output: %s", err)
 	}
-	//outcome = append(outcome, resp)
-	// Return face rectangle coordinates
 	return string(j)
 }
 

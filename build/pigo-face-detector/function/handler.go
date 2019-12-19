@@ -42,7 +42,7 @@ import (
 
 	"mime/multipart"
 
-	"github.com/esimov/pigo/core"
+	pigo "github.com/esimov/pigo/core"
 	"github.com/fogleman/gg"
 )
 
@@ -62,6 +62,7 @@ type FaceDetector struct {
 type DetectionResult struct {
 	Faces       []image.Rectangle
 	ImageBase64 string
+	Time        string
 }
 
 // Handle a serverless request
@@ -144,6 +145,7 @@ func Handle(req []byte) string {
 				resp = DetectionResult{
 					Faces:       rects,
 					ImageBase64: base64.StdEncoding.EncodeToString(image),
+					Time:        "3",
 				}
 				outcome = append(outcome, resp)
 			}

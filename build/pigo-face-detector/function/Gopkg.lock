@@ -2,28 +2,35 @@
 
 
 [[projects]]
+  digest = "1:24767d95dd94f3ed8c8d879af7baf642fc3a4371acb30807192cf1d89ddc5d6c"
   name = "github.com/esimov/pigo"
   packages = ["core"]
-  revision = "b8c07b835cabb54f6d1b101cc2fddd8cc2338fe7"
-  version = "v1.1.0"
+  pruneopts = "UT"
+  revision = "9105c677c44c5898ec2264f3d02d6b85f27b54fb"
+  version = "v1.4.0"
 
 [[projects]]
+  digest = "1:b6e21e98fcbc23345ea2e3b70766edfc7fb53c0c99966fed18e889de0fcb67f2"
   name = "github.com/fogleman/gg"
   packages = ["."]
-  revision = "a9ff18eccd6d57b3c8576a71a91a04868f62078c"
-  version = "v1.1.0"
+  pruneopts = "UT"
+  revision = "0403632d5b905943a1c2a5b2763aaecd568467ec"
+  version = "v1.3.0"
 
 [[projects]]
   branch = "master"
+  digest = "1:62c57507df491b657e9ae2645f30958d9964c8eeb380600469eedc951ebb3a0e"
   name = "github.com/golang/freetype"
   packages = [
     "raster",
-    "truetype"
+    "truetype",
   ]
+  pruneopts = "UT"
   revision = "e2365dfdc4a05e4b8299a783240d4a7d5a65d4e4"
 
 [[projects]]
   branch = "master"
+  digest = "1:06e8ba550779e584596a792a7d533bf4f015b332883cc25d42266483a53d6e0e"
   name = "golang.org/x/image"
   packages = [
     "draw",
@@ -31,13 +38,17 @@
     "font/basicfont",
     "font/plan9font",
     "math/f64",
-    "math/fixed"
+    "math/fixed",
   ]
-  revision = "c73c2afc3b812cdd6385de5a50616511c4a3d458"
+  pruneopts = "UT"
+  revision = "9130b4cfad522142c86367afe5e34ce811a85a4b"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "18738cdf64faa5fad780714556b927ed8b6a3e8c68669b0b0b136490bd77bd0a"
+  input-imports = [
+    "github.com/esimov/pigo/core",
+    "github.com/fogleman/gg",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
